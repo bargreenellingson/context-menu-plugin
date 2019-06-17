@@ -1,5 +1,6 @@
 import Context from './context';
 import './style.sass';
+import React from 'react';
 
 class Item extends React.Component {
     constructor(props) {

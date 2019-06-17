@@ -1,6 +1,7 @@
 import './style.sass';
 import Item from './Item';
 import Context from './context';
+import React from 'react';
 
 export default ({ items, position: [x, y], visible, args, onClose }) => {
     if(!visible) return null;

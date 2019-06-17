@@ -3,6 +3,7 @@ import VueMenu, * as VueComponents from './vue-menu';
 import getMainMenu from './main-menu';
 import getNodeMenu from './node-menu';
 import IMenu from './menu';
+import * as utils from './utils';
 
 function install(editor, {
     searchBar = true,
@@ -12,13 +13,14 @@ function install(editor, {
     nodeItems = {},
     allocate = () => [],
     rename = component => component.name,
-    Menu = null
+    Menu = null,
+    Components = {}
 }) {
     if(!Menu) throw new TypeError('Menu must be defined');
 
     editor.bind('hidecontextmenu');
-    const mainMenu = new (getMainMenu(Menu))(editor, { searchBar, searchKeep, delay }, { items, allocate, rename });
-    const nodeMenu = new (getNodeMenu(Menu))(editor, { searchBar: false, delay }, nodeItems);
+    const mainMenu = new (getMainMenu(Menu))(editor, { Components, searchBar, searchKeep, delay }, { items, allocate, rename });
+    const nodeMenu = new (getNodeMenu(Menu))(editor, { Components, searchBar: false, delay }, nodeItems);
 
     editor.on('hidecontextmenu', () => {
         mainMenu.hide();
@@ -44,7 +46,8 @@ export {
     VueComponents,
     ReactMenu,
     ReactComponents,
-    IMenu
+    IMenu,
+    utils
 }
 
 export default {

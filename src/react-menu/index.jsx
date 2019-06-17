@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom';
 import ReactMenu from './Menu';
 import Menu from '../menu';
 import { injectItem } from '../utils';
+import React from 'react';
 
 export default class extends Menu {
     constructor(editor, props) {
