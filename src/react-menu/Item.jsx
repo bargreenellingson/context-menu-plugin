@@ -21,21 +21,22 @@ class Item extends React.Component {
     }
 
     render() {
-        const { item: { title, subitems } } = this.props;
+        const { item: { title, subitems }, ItemComponent } = this.props;
         const { visibleSubitems } = this.state;
 
         return (
-            <div
+            <ItemComponent
                 className={'item' + (subitems? ' hasSubitems': '')}
                 onClick={this.onClick}
-                onMouseOver={() => this.setState({ visibleSubitems: true })}
+                onMouseOver={() =>
+                  this.setState({ visibleSubitems: true })}
                 onMouseLeave={() => this.setState({ visibleSubitems: false })}
             >
                 {title}
                 {subitems && visibleSubitems && <div className="subitems">
-                    {subitems.map((subitem) => <Item item={subitem}/>)}
+                    {subitems.map((subitem) => <Item key={subitem.title} item={subitem}/>)}
                 </div>}
-            </div>
+            </ItemComponent>
         )
     }
 }
