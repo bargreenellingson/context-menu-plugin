@@ -31,6 +31,7 @@ class Item extends React.Component {
                 onMouseOver={() =>
                   this.setState({ visibleSubitems: true })}
                 onMouseLeave={() => this.setState({ visibleSubitems: false })}
+                item={this.props.item}
             >
                 {title}
                 {subitems && visibleSubitems && <div className="subitems">

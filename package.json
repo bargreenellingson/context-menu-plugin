@@ -3,9 +3,6 @@
   "version": "0.4.0",
   "description": "",
   "main": "build/context-menu-plugin.common.js",
-  "file": [
-    "build/"
-    ],
   "module": "build/context-menu-plugin.esm.js",
   "scripts": {
     "build": "rete --build rete.config.js",
